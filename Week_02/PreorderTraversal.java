@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 树的前序遍历
- * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/er-cha-shu-de-qian-xu-bian-li-by-leetcode/
+ * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
  * @author linkuan
  * @version 1.0
  * @since 2020/5/31 10:39
@@ -19,6 +21,11 @@ public class PreorderTraversal {
         }
     }
 
+    /**
+     * 递归
+     * @param root
+     * @return
+     */
     public List<Integer> preorderTraversal(TreeNode root) {
         LinkedList<TreeNode> stack = new LinkedList<>();
         LinkedList<Integer> output = new LinkedList<>();
@@ -38,5 +45,37 @@ public class PreorderTraversal {
             }
         }
         return output;
+    }
+
+    /**
+     * 迭代
+     * 本质上是在模拟递归，因为在递归的过程中使用了系统栈，所以在迭代的解法中常用Stack来模拟系统栈。
+     *
+     * 前序遍历
+     * 首先我们应该创建一个Stack用来存放节点，首先我们想要打印根节点的数据，此时Stack里面的内容为空，所以我们优先将头结点加入Stack，然后打印。
+     *
+     * 之后我们应该先打印左子树，然后右子树。所以先加入Stack的就是右子树，然后左子树。
+     *
+     */
+    class Solution {
+        public List<Integer> preorderTraversal(TreeNode root) {
+            List<Integer> res = new ArrayList<>();
+            Stack<TreeNode> stack = new Stack<>();
+            if(null == root){
+                return res;
+            }
+            stack.push(root);
+            while(!stack.isEmpty()){
+                TreeNode node = stack.pop();
+                res.add(node.val);
+                if(null != node.right){
+                    stack.push(node.right);
+                }
+                if(null != node.left){
+                    stack.push(node.left);
+                }
+            }
+            return res;
+        }
     }
 }
