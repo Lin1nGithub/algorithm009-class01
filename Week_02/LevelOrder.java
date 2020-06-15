@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Queue;
 /**
  * N叉树的层序遍历
- * https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-by-leetcode/
+ * https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/
  * @author linkuan
  * @version 1.0
  * @since 2020/5/31 10:39
