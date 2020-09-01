@@ -49,7 +49,6 @@ public class Permute {
 
         for (int i = 0; i < nums.length ; i++){
 
-
             if (!used[i]){
 
                 path.add(nums[i]);
