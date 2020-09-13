@@ -41,6 +41,7 @@ public class MinDepth {
         return step;
     }
 
+    // 广度优先遍历
     // 计算从起点 start 到终点 target 的最近距离
     int BFS(TreeNode start, TreeNode target) {
         Queue<TreeNode> q = new LinkedList<>(); // 核心数据结构

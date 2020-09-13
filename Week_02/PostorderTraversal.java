@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 丑数（动态规划，清晰图解）
@@ -33,5 +35,30 @@ public class PostorderTraversal {
             helper(node.right,res);
         }
         res.add(node.val);
+    }
+
+    class Solution{
+
+        LinkedList<Integer> res = new LinkedList<>();
+
+        LinkedList<TreeNode> stack = new LinkedList<>();
+
+        public List<Integer> postorderTraversal(TreeNode root) {
+            if (null == root){
+                return res;
+            }
+            stack.add(root);
+            while (!stack.isEmpty()){
+                TreeNode node = stack.pollLast();
+                res.addFirst(node.val);
+                if (null != node.left){
+                    stack.add(node.left);
+                }
+                if (null != node.right){
+                    stack.add(node.right);
+                }
+            }
+            return res;
+        }
     }
 }
