@@ -55,7 +55,7 @@ public class BinarySearch {
 
         while (left <= right){
 
-            int mid = left + (right - left);
+            int mid = left + (right - left) / 2;
 
             if (nums[mid] < target){
 
@@ -63,12 +63,14 @@ public class BinarySearch {
             }else if(nums[mid] > target){
 
                 right = mid - 1;
+            // 缩小「搜索区间」的下界right，使得区间不断向左收缩，达到锁定左侧边界的目的。
             }else if(nums[mid] ==  target){
 
                 right = mid - 1;
             }
         }
 
+        // 数组越界 数组长度 nmus.lenght - 1（ 条件设置成 left > num.lenght - 1同理？
         if (left >= nums.length || nums[left] != target){
 
             return -1;
@@ -99,12 +101,15 @@ public class BinarySearch {
             }else if(nums[mid] > target){
 
                 right = mid - 1;
+
+            // 增大「搜索区间」的下界left，使得区间不断向右收缩，达到锁定右侧边界的目的。
             }else if(nums[mid] == target){
 
                 left = mid + 1;
             }
         }
 
+        //  数组越界
         if (right < 0 || nums[right] != target){
 
             return -1;
