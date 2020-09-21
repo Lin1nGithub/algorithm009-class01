@@ -42,8 +42,11 @@ public class Permute {
     }
 
     public void backtrack(int nums[], int depth,List<Integer> path, boolean[] used){
+
         if (depth == nums.length){
+
             res.add(new ArrayList<>(path));
+
             return;
         }
 

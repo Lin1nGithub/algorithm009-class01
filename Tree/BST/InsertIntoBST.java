@@ -13,19 +13,19 @@ public class InsertIntoBST {
 
         if (root == null){
 
-            return new TreeNode();
+            return new TreeNode(val);
         }
 
-        if (val > root.val){
+        if (val > root.val) {
 
             root.right = insertIntoBST(root.right, val);
-
         }else {
 
             root.left = insertIntoBST(root.left, val);
         }
 
         return root;
+
     }
 
 
