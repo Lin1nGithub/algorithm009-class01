@@ -17,6 +17,7 @@ public class HasPathSum {
         }
 
         if (root.right == null && root.left == null){
+
             return sum == root.val;
         }
 
