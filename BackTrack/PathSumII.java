@@ -8,7 +8,7 @@ import java.util.List;
  * @version 1.0
  * @since 2020/9/8 11:52 下午
  */
-public class PathSum {
+public class PathSumII {
 
     List<List<Integer>> res = new ArrayList<>();
 

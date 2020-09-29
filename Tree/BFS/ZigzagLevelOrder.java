@@ -13,81 +13,55 @@ public class ZigzagLevelOrder {
 
     List<List<Integer>> res = new ArrayList<>();
 
-    Queue<TreeNode> q = new LinkedList<>();
-
-    Stack<TreeNode> stack = new Stack<>();
-
+    Queue<TreeNode> queue = new LinkedList<>();
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
 
-        if (root == null){
+        if (null == root){
 
             return res;
         }
 
-        q.offer(root);
+        queue.offer(root);
 
-        while (!q.isEmpty()){
+        int step = 1;
 
-            List<Integer> list = new ArrayList<>();
+        while (!queue.isEmpty()){
 
-            while (!q.isEmpty()){
+            int sz = queue.size();
 
-                TreeNode node = q.poll();
+            List<Integer> list = new ArrayList<>(sz);
 
-                list.add(node.val);
+            for (int i = 0; i < sz; i++){
+
+                TreeNode node = queue.poll();
+
+                // 偶数
+                if (step % 2 == 0){
+
+                    list.add(0,node.val);
+                }else {
+
+                    list.add(node.val);
+                }
 
                 if (node.left != null){
 
-                    stack.push(node.left);
+                    queue.offer(node.left);
                 }
 
                 if (node.right != null){
 
-                    stack.push(node.right);
+                    queue.offer(node.right);
                 }
             }
 
             res.add(list);
 
-            list = new ArrayList<>();
-
-            while (!stack.isEmpty()){
-
-                TreeNode node = stack.pop();
-
-                list.add(node.val);
-
-                if (q.isEmpty()){
-                    if (node.left != null){
-
-                        q.offer(node.left);
-                    }
-
-                    if (node.right != null){
-
-                        q.offer(node.right);
-                    }
-                }
-                else {
-                    if (node.right != null){
-
-                        q.offer(node.right);
-                    }
-
-                    if (node.left != null){
-
-                        q.offer(node.left);
-                    }
-                }
-            }
-
-            if (list.size() > 0){
-
-                res.add(list);
-            }
+            step++;
         }
 
         return res;
     }
+
 }
