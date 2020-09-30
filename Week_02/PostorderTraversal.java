@@ -60,5 +60,34 @@ public class PostorderTraversal {
             }
             return res;
         }
+
+        public List<Integer> postorderTraversalTwo(TreeNode root) {
+
+            Stack<TreeNode> stack = new Stack<>();
+
+            TreeNode temp = root;
+
+            List<Integer> res = new ArrayList<>();
+
+            while (temp != null || !stack.isEmpty()){
+
+                if (temp != null){
+
+                    stack.add(temp);
+
+                    res.add(0, temp.val);
+
+                    temp = temp.right;
+
+                }else {
+
+                    TreeNode node = stack.pop();
+
+                    temp = node.left;
+                }
+            }
+
+            return res;
+        }
     }
 }

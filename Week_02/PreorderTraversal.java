@@ -77,5 +77,40 @@ public class PreorderTraversal {
             }
             return res;
         }
+
+        public List<Integer> preorderTraversalTwo(TreeNode root) {
+
+            if (null == root){
+
+                return null;
+            }
+
+            Stack<TreeNode> stack = new Stack<>();
+
+            List<Integer> res = new ArrayList<>();
+
+            TreeNode temp = root;
+
+            while (temp != null || !stack.isEmpty()){
+
+                if (temp != null){
+
+                    stack.add(temp);
+
+                    res.add(temp.val);
+                    // 先遍历左子树，一直走到空
+                    temp = temp.left;
+
+                }else {
+
+                    TreeNode node = stack.pop();
+
+                    // 左子树走到空，就从获取已经遍历过左子树的中间结果，将它出栈，并遍历它的右子树
+                    temp = node.right;
+                }
+            }
+
+            return res;
+        }
     }
 }
