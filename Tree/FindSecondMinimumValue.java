@@ -14,5 +14,6 @@ public class FindSecondMinimumValue {
 
     public int findSecondMinimumValue(TreeNode root) {
 
+        return 0;
     }
 }
