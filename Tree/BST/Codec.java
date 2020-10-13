@@ -48,7 +48,6 @@ public class Codec {
 
         String[] split = data.split("\\s+");
 
-
         int[] nums = new int[split.length];
 
         for (int i = 0; i < split.length; i++) {
