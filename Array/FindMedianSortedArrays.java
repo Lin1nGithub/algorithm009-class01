@@ -33,7 +33,7 @@ public class FindMedianSortedArrays {
         if (nums.length % 2 == 1){
             return nums[index];
         }else {
-            return (double) (nums[index] + nums[index - 1]) / 2;
+            return (nums[index] + nums[index - 1]) * 0.5;
         }
     }
 
