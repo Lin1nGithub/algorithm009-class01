@@ -42,5 +42,28 @@ public class LengthOfLIS {
     public static void main(String[] args) {
         LengthOfLIS lengthOfLIS = new LengthOfLIS();
         lengthOfLIS.lengthOfLIS(new int[]{1,4,3,4,2,3});
+
+        lengthOfLIS.pivotIndex(new int[]{-1,-1,-1,0,1,1});
+    }
+
+    public int pivotIndex(int[] nums) {
+        if (nums.length == 0) return -1;
+        int left = 0;
+        int right = nums.length;
+        while (left < right){
+            int leftSum = 0;
+            for (int i = 0; i < left; i++){
+                leftSum += nums[i];
+            }
+            int rightSum = 0;
+            for (int i = left + 1; i < right; i++){
+                rightSum += nums[i];
+            }
+            if (leftSum == rightSum){
+                return left;
+            }
+            left++;
+        }
+        return -1;
     }
 }
