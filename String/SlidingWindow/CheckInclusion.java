@@ -1,3 +1,5 @@
+package SlidingWindow;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,5 +53,53 @@ public class CheckInclusion {
         }
 
         return false;
+    }
+
+    public String minWindow(String s, String t) {
+        Map<Character, Integer> need = new HashMap<>(), window = new HashMap<>();
+        for (int i = 0; i < t.length(); i++) {
+            need.put(t.charAt(i), need.getOrDefault(t.charAt(i), 0) + 1);
+        }
+        int left = 0, right = 0;
+        int valid = 0;
+
+        int start = 0, len = Integer.MAX_VALUE;
+        while (right < s.length()){
+            char c = s.charAt(right);
+            right++;
+            // 维护窗口数据
+            if (need.containsKey(c)){
+                window.put(c, window.getOrDefault(c, 0) + 1);
+                if (window.get(c).equals(need.get(c))){
+                    valid++;
+                }
+            }
+
+            // 窗口收缩
+            while (need.size() == valid){
+                if (right - left < len){
+                    start = left;
+                    len = right - left;
+                }
+
+                char d = s.charAt(left);
+                left++;
+
+                if (need.containsKey(d)){
+                    if (window.get(d).equals(need.get(d))){
+                        valid--;
+                    }
+                    window.put(d, window.get(d) - 1);
+                }
+            }
+        }
+
+        return len == Integer.MAX_VALUE ?
+                "" : s.substring(start, start + len);
+    }
+
+    public static void main(String[] args) {
+        CheckInclusion solution = new CheckInclusion();
+        System.out.println(solution.minWindow("ADOBECODEBANC", "ABC"));
     }
 }
