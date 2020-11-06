@@ -1,6 +1,8 @@
 /* 滑动窗口算法框架 */
 void slidingWindow(string s, string t) {
+    // unordered_map就是哈希表（字典），它的一个方法count(key)相当于 Java 的containsKey(key)可以判断键 key 是否存在。
     unordered_map<char, int> need, window;
+    // map[key]++相当于 Java 的map.put(key, map.getOrDefault(key, 0) + 1)。
     for (char c : t) need[c]++;
 
     int left = 0, right = 0;
