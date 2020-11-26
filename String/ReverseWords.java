@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * https://leetcode-cn.com/problems/reverse-words-in-a-string/
  * 151
@@ -23,7 +28,6 @@ public class ReverseWords {
             }
             j = i; // 将j放在单词尾
         }
-
         return sb.substring(0, sb.length() - 1);
     }
 
@@ -54,5 +58,10 @@ public class ReverseWords {
     public static void main(String[] args) {
         ReverseWords reverseWords = new ReverseWords();
         reverseWords.reverseWords("the sky is blue");
+//        System.out.println(reverseWords.minWindow("ADOBECODEBANC", "ABC"));
+//        System.out.println(reverseWords.checkInclusion("ac", "eidbaooo"));
+//        reverseWords.findAnagrams("cbaebabacd","abc");
+//        System.out.println(reverseWords.lengthOfLongestSubstring("abcabcbb"));
     }
+
 }

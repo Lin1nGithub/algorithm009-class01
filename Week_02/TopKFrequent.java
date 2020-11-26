@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * 丑数（动态规划，清晰图解）
+ * 前 K 个高频元素
  * https://leetcode-cn.com/problems/top-k-frequent-elements/
  * @author linkuan
  * @version 1.0
