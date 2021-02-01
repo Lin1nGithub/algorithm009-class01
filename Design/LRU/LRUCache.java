@@ -1,7 +1,7 @@
 package LRU;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * LRU缓存机制
@@ -80,6 +80,40 @@ public class LRUCache {
 //        cache.put(key, val);
 //        return val;
 //    }
+
+
+
+    public int[] fairCandySwap(int[] A, int[] B) {
+
+        int sumA = Arrays.stream(A).sum();
+
+        int sumB = Arrays.stream(B).sum();
+
+        int delta = (sumA - sumB) / 2;
+
+        Set<Integer> rec = new HashSet<>();
+
+        for (int num : A){
+
+            rec.add(num);
+        }
+
+        for (int i = 0; i < B.length; i++){
+
+            if (rec.contains(B[i] + delta)){
+
+                return new int[]{B[i] + delta,  B[i]};
+            }
+        }
+
+        return new int[]{-1,-1};
+    }
+
+    public static void main(String[] args) {
+
+        LRUCache solution = new LRUCache(1);
+        int[] ints = solution.fairCandySwap(new int[]{1, 2, 5}, new int[]{2, 4});
+    }
 
 
 }
