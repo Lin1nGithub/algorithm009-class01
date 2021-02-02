@@ -1,5 +1,7 @@
 package TopK;
 
+import BST.ListNode;
+
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -119,7 +121,7 @@ public class GetLeastNumbers {
 //        HeapSort sort = new HeapSort();
 //        sort.getLeastNumbers(new int[]{4,5,1,6,2,7,3,8}, 4);
         QuickSort sort = new QuickSort();
-        sort.getLeastNumbers(new int[]{4,5,1,6,2,7,3,8}, 4);
+        int[] leastNumbers = sort.getLeastNumbers(new int[]{0, 0, 0, 2, 0, 5}, 0);
         GetLeastNumbers solution = new GetLeastNumbers();
         solution.sortArrayByParityII(new int[]{4,2,5,7});
     }

@@ -1,8 +1,9 @@
 package SlidingWindow;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import BST.ListNode;
+
+import java.util.*;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * 滑动窗口最大值
@@ -91,7 +92,7 @@ public class MaxSlidingWindow {
     public int[] maxSlidingWindoW(int[] nums, int k) {
         if(nums == null || nums.length < 2) return nums;
         // 双向队列 保存当前窗口最大值的数组位置 保证队列中数组位置的数值按从大到小排序
-        LinkedList<Integer> queue = new LinkedList();
+        LinkedList<Integer> queue = new LinkedList<>();
         // 结果数组
         int[] result = new int[nums.length - k + 1];
         // 遍历nums数组
@@ -117,5 +118,39 @@ public class MaxSlidingWindow {
     public static void main(String[] args) {
         MaxSlidingWindow solution = new MaxSlidingWindow();
         solution.maxSlidingWindow(new int[]{1,-1,3,-3,5,3,6,7}, 3);
+
+        Vector<String> list = new Vector<>();
+        try {
+            CountDownLatch countDownLatch = new CountDownLatch(10);
+            for (int i = 0; i < 10; i++){
+                new Thread(() -> {
+                    list.add(Thread.currentThread().getName());
+                    countDownLatch.countDown();
+//                    System.out.println(countDownLatch.getCount());
+                }).start();
+            }
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(list.size());
     }
+
+    public void rotate(int[] nums, int k) {
+        k %= nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums,0,k);
+        reverse(nums,k,nums.length - 1);
+    }
+
+    public void reverse(int[] nums, int start, int end) {
+        while(start < end){
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
 }

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * 寻找两个正序数组的中位数
  * 4
@@ -41,4 +43,6 @@ public class FindMedianSortedArrays {
         FindMedianSortedArrays find = new FindMedianSortedArrays();
         System.out.println(find.findMedianSortedArrays(new int[]{1,2},new int[]{3,4}));
     }
+
+
 }

@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 不同路径
@@ -27,8 +29,43 @@ public class UniquePaths {
         return dp[m - 1][n - 1];
     }
 
+    class Solution{
+
+    }
+
     public static void main(String[] args) {
         UniquePaths uniquePaths = new UniquePaths();
-        uniquePaths.uniquePaths(1,1);
+        uniquePaths.uniquePaths(3,2);
+
+        uniquePaths.findRepeatNumber(new int[]{2, 3, 1, 0, 2, 5, 3});
+    }
+
+    public int findRepeatNumber(int[] nums) {
+        Arrays.sort(nums);
+        for(int i = 0; i < nums.length - 1; i++){
+            if(nums[i] == nums[i + 1]){
+                return nums[i];
+            }
+        }
+        return -1;
+    }
+
+    private void quickSort(int lo, int hi, int[] nums){
+        if(lo > hi) return;
+        int v = nums[lo];
+        int left = lo, right = hi;
+        while(left < right){
+            while(left < right && nums[right] >= v){
+                right--;
+            }
+            nums[left] = nums[right];
+            while(left < right && nums[left] <= v){
+                left++;
+            }
+            nums[right] = nums[left];
+        }
+        nums[left] = v;
+        quickSort(lo, left - 1, nums);
+        quickSort(right + 1, hi, nums);
     }
 }
