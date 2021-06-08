@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * 11
@@ -35,6 +36,10 @@ public class MaxArea {
         MaxArea solution = new MaxArea();
         solution.maxArea(new int[]{4,3,2,1,4});
         solution.findDisappearedNumbers(new int[]{4,3,2,7,8,2,3,1});
+
+        Scanner input = new Scanner(System.in);
+        String s = input.next();
+        System.out.println(s);
     }
 
     public List<Integer> findDisappearedNumbers(int[] nums) {
