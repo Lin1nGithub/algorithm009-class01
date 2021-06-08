@@ -75,9 +75,12 @@ public class MergeKLists {
     }
 
 
-
-
-
+    /**
+     * 两数相加
+     * @param l1
+     * @param l2
+     * @return
+     */
     public  ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if (l1 == null && l2 == null) return null;
         ListNode pre = new ListNode(-1);
@@ -108,6 +111,12 @@ public class MergeKLists {
         return pre.next;
     }
 
+    /**
+     * 删除链表的倒数第N个节点
+     * @param head
+     * @param n
+     * @return
+     */
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
@@ -124,6 +133,12 @@ public class MergeKLists {
         return dummy.next;
     }
 
+    /**
+     * 合并两个有序链表
+     * @param l1
+     * @param l2
+     * @return
+     */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null){
             return l2;
@@ -139,6 +154,23 @@ public class MergeKLists {
         return l1;
     }
 
-
-
+    /**
+     * 环形链表
+     * @param head
+     * @return
+     */
+    public boolean hasCycle(ListNode head) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode fast, slow;
+        fast = slow = dummy.next;
+        while (fast != null &&  fast.next!= null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow){
+                return true;
+            }
+        }
+        return false;
+    }
 }
