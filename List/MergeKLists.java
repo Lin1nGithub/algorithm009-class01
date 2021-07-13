@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -172,5 +174,95 @@ public class MergeKLists {
             }
         }
         return false;
+    }
+
+    class LRUCache {
+
+        int capacity;
+        DoubleList cache;
+        Map<Integer, Node> map;
+
+        public LRUCache(int capacity) {
+            cache = new DoubleList();
+            map = new HashMap();
+            this.capacity = capacity;
+        }
+
+        public int get(int key) {
+            if(!map.containsKey(key)) return -1;
+
+            Node target = map.get(key);
+            cache.remove(target);
+            cache.addLast(target);
+            return target.val;
+        }
+
+        public void put(int key, int value) {
+            if(map.containsKey(key)) {
+                Node target = map.get(key);
+                target.val = value;
+                map.put(key, target);
+                cache.remove(target);
+                cache.addLast(target);
+            }
+            else {
+                // 如果容量满了
+                if(cache.size == capacity) {
+                    Node first = cache.removeFirst();
+                    map.remove(first.key);
+                }
+
+                Node last = new Node(key, value);
+                map.put(key, last);
+                cache.addLast(last);
+            }
+        }
+
+        class Node {
+            int key;
+            int val;
+            Node prev;
+            Node next;
+
+            public Node(int k,int v) {
+                this.key = k;
+                this.val = v;
+            }
+        }
+
+        class DoubleList {
+            Node head;
+            Node tail;
+            int size;
+
+            public DoubleList() {
+                this.head = new Node(0, 0);
+                this.tail = new Node(0, 0);
+                this.size = 0;
+            }
+
+            public void remove(Node x) {
+                x.prev.next = x.next;
+                x.next.prev = x.prev;
+                size--;
+            }
+
+            public void addLast(Node x) {
+                x.next = tail;
+                x.prev = tail.prev;
+                tail.next.prev = x;
+                tail.prev = x;
+                size++;
+            }
+
+            public Node removeFirst() {
+                Node first = head.next;
+                if(first == tail) {
+                    return null;
+                }
+                remove(first);
+                return first;
+            }
+        }
     }
 }
