@@ -153,4 +153,24 @@ public class MaxSlidingWindow {
         }
     }
 
+    public int characterReplacement(String s, int k) {
+        if (k >= s.length()) return s.length();
+        int[] window = new int[26];
+        int len = Integer.MIN_VALUE;
+        int left = 0, right = 0;
+        while(right < s.length()){
+            int index = s.charAt(right) - 'A';
+            window[index]++;
+
+            right++;
+
+            len = Math.max(len, window[index]);
+            while (len + k < right - left + 1){
+                window[s.charAt(left) - 'A']--;
+                left++;
+            }
+        }
+        return len;
+    }
+
 }

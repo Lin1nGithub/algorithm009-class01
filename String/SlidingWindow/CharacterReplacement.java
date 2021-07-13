@@ -80,8 +80,37 @@ public class CharacterReplacement {
         return res;
     }
 
+//    public int characterReplacement(String s, int k) {
+//        if (k >= s.length()) return s.length();
+//        int[] window = new int[26];
+//        int len = Integer.MIN_VALUE;
+//        int left = 0, right = 0;
+//        while(right < s.length()){
+//            char c = s.charAt(right);
+//            right++;
+//
+//            window[c - 'A']++;
+//
+//            len = Math.max(len, window[c - 'A']);
+//
+//            while(right - left > k + len){
+//                char d = s.charAt(left);
+//                left++;
+//
+//                window[d - 'A']--;
+//            }
+//        }
+//        return s.length() - left;
+//    }
+
     public static void main(String[] args) {
         CharacterReplacement solution = new CharacterReplacement();
         solution.characterReplacement("AABB", 2);
+    }
+
+    public double[] medianSlidingWindow(int[] nums, int k) {
+
+
+        return null;
     }
 }
