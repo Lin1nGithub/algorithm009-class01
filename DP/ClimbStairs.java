@@ -67,5 +67,23 @@ public class ClimbStairs {
     public static void main(String[] args) {
         ClimbStairs solution = new ClimbStairs();
         System.out.println(solution.candy(new int[]{0,1,2,5,3,2,7}));
+
+        ListNode listNode = new ListNode(1);
+        ListNode listNode1 = listNode.next = new ListNode(2);
+        ListNode listNode2 = listNode1.next = new ListNode(3);
+        ListNode listNode3 = listNode2.next = new ListNode(4);
+        ListNode listNode4 = listNode3.next = new ListNode(5);
+        reverseList(listNode);
+    }
+
+    public static ListNode reverseList(ListNode head) {
+        ListNode cur = null, pre = head;
+        while (pre != null) {
+            ListNode t = pre.next;
+            pre.next = cur;
+            cur = pre;
+            pre = t;
+        }
+        return cur;
     }
 }

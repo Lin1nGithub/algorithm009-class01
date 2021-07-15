@@ -13,6 +13,7 @@ public class ThreeSum {
 
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
+
         // 排序
         quickSort(nums, 0, nums.length - 1);
         for (int k = 0; k < nums.length - 2; k++) {
@@ -39,7 +40,6 @@ public class ThreeSum {
 
     private void quickSort(int[] nums, int lo, int hi){
         if (lo > hi) return;
-
         int v = nums[lo];
         int left = lo, right = hi;
         while (left < right){
